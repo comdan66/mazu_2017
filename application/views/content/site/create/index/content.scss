@@ -1,0 +1,156 @@
+/**
+ * @author      OA Wu <comdan66@gmail.com>
+ * @copyright   Copyright (c) 2016 OA Wu Design
+ */
+
+@import "_oa";
+
+#form {
+  display: inline-block;
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  margin-top: 20px;
+  text-align: center;
+  background-color: rgba(253, 253, 253, 1.00);
+  padding: 20px;
+  float: none;
+  @include box-shadow(0 1px 4px 0 rgba(0,0,0,0.14));
+
+  h1 {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    padding-left: 190px;
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+    letter-spacing: 4px;
+    @media screen and (min-width: 0) and (max-width: #{550px - 1px}) {
+      padding-left: 0;
+    }
+    @media screen and (min-width: 550px) and (max-width: #{700px - 1px}) {
+      padding-left: 100px;
+    }
+  }
+  .row {
+    display: block;
+    text-align: left;
+
+    @include clearfix();
+
+    + .row {
+      margin-top: 10px;
+    }
+    > span {
+      position: relative;
+      display: inline-block;
+      float: left;
+      width: 190px;
+      text-align: right;
+      padding: 0 5px;
+      padding-right: 30px;
+      line-height: 25px;
+      @media screen and (min-width: 0) and (max-width: #{550px - 1px}) {
+        display: none;
+      }
+      @media screen and (min-width: 550px) and (max-width: #{700px - 1px}) {
+        width: 100px;
+      }
+
+      &.must {
+        &:before {
+          content: '*';
+          font-weight: bold;
+          display: inline-block;
+          margin-right: 5px;
+          color: rgba(234, 67, 53, 1.00);
+        }
+      }
+      &:after {
+        content: ':';
+        position: absolute;
+        right: 15px;
+        top: 0;
+        display: inline-block;
+        width: 5px;
+        height: 100%;
+      }
+    }
+    >input, >select {
+      float: right;
+      @include input;
+      background-color: white;
+      width: calc(100% - 190px);
+      @media screen and (min-width: 0) and (max-width: #{550px - 1px}) {
+        width: 100%;
+      }
+      @media screen and (min-width: 550px) and (max-width: #{700px - 1px}) {
+        width: calc(100% - 100px);
+      }
+    }
+    >select {
+      float: right;
+      height: 35px;
+      background-color: white;
+    }
+    >div {
+      float: right;
+      width: calc(100% - 190px - 2px);
+      background-color: white;
+      @media screen and (min-width: 0) and (max-width: #{550px - 1px}) {
+        width: 100%;
+      }
+      @media screen and (min-width: 550px) and (max-width: #{700px - 1px}) {
+        width: calc(100% - 100px - 2px);
+      }
+    }
+    >textarea {
+      float: right;
+      @include textarea;
+      background-color: white;
+      width: calc(100% - 190px);
+      @media screen and (min-width: 0) and (max-width: #{550px - 1px}) {
+        width: 100%;
+      }
+      @media screen and (min-width: 0) and (max-width: #{700px - 1px}) {
+        width: calc(100% - 100px);
+      }
+    }
+  }
+  >div:last-child {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+    margin-top: 20px;
+    @include clearfix();
+    
+    > * {
+      float: right;
+      @include button('mazu2');
+
+      + * {
+        @include button('cyan');
+        margin-right: 10px;
+      }
+    }
+  }
+}
+#alert {
+  @include alert('info', false);
+  margin-bottom: 30px;
+  margin-top: 0;
+  @include border-radius(0);
+  &:empty {
+    display: none;
+  }
+}
+#danger {
+  @include alert('danger', false);
+  margin-bottom: 30px;
+  margin-top: 0;
+  @include border-radius(0);
+  &:empty {
+    display: none;
+  }
+}
