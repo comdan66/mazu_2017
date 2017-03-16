@@ -55,7 +55,37 @@ html {
 
     @include font-smoothing(antialiased);
     
+    // -webkit-overflow-scrolling: touch;
+
+    // &::-webkit-scrollbar-thumb {
+    //   background-color: rgba(175, 175, 175, 1.00);
+    //   @include border-radius(4px);  
+    // }
+    // &::-webkit-scrollbar {
+    //   background-color: transparent;
+    //   width: 8px;
+    // }
   }
+}
+.ckb {
+  display: none;
+  position: fixed;
+  top: -999px;
+  left: -999px;
+  z-index: -999;
+  @include opacity(0);
+}
+.ckb_cover {
+  position: fixed;
+  top: -999px;
+  left: -999px;
+  z-index: -999;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .3);
+  cursor: pointer;
+  @include opacity(0);
 }
 
 
@@ -69,7 +99,7 @@ $headerHeight: 55px;
   height: $headerHeight;
   background-color: rgba(218, 57, 50, 1.00);
   @include box-shadow(0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28));
-  z-index: 10;
+  z-index: 30;
 }
 
 #header_content {
@@ -78,13 +108,8 @@ $headerHeight: 55px;
   width: calc(100% - 10px * 2);
   height: 100%;
   margin: 0 10px;
-  padding: 0 10px;
-  // background-color: rgba(0, 128, 0, 0.2);
+  padding: 0;
   @include clearfix();
-
-  @media screen and (min-width: 0) and (max-width: #{500px - 1px}) {
-    padding: 0;
-  }
   
   > * {
     display: inline-block;
@@ -99,6 +124,7 @@ $headerHeight: 55px;
     color: rgba(255, 255, 255, .80);
     @include transition(color .3s);
     cursor: pointer;
+    text-align: left;
     
     margin-top: 8px;
     font-size: 28px;
@@ -106,21 +132,18 @@ $headerHeight: 55px;
     &:hover {
       color: rgba(255, 255, 255, 1);
     }
-    // @media screen and (min-width: 0) and (max-width: #{450px - 1px}) {
-    // }
   }
   .content {
-    width: calc(100% - 40px - 10px - 150px - 38px - 20px);
+    width: calc(100% - 40px - 175px - 38px - 10px);
     height: 100%;
     position: relative;
-    @media screen and (min-width: 0) and (max-width: #{450px - 1px}) {
-      width: calc(100% - 40px - 10px - 38px - 10px);
-      margin-left: 10px;
+    @include range-in(0, 600px - 1px) {
+      width: calc(100% - 40px - 38px - 10px);
     }
 
     input[type='text'] {
       border: 1px solid rgba(255, 0, 0, 0);
-      background-color: rgba(156, 31, 16, 1.00);
+      background-color: rgba(255,255,255,.15);
       width: 100%;
       margin-top: 10px;
       height: calc(100% - 10px * 2);
@@ -132,7 +155,7 @@ $headerHeight: 55px;
       @include input-placeholder {
         font-size: 15px;
         font-weight: normal;
-        color: rgba(255, 255, 255, .550);
+        color: rgba(255, 255, 255, .750);
       }
       @include border-radius(2px);
       @include transition(border-color .3s, background-color .3s);
@@ -147,7 +170,6 @@ $headerHeight: 55px;
         line-height: 40px;
         padding: 0;
         text-align: center;
-        // background-color: rgba(0, 0, 255, 0.2);
         font-size: 15px;
         color: rgba(255, 255, 255, .7500);
         cursor: pointer;
@@ -176,378 +198,73 @@ $headerHeight: 55px;
   .user {
     width: 38px;
     height: 38px;
-    margin-left: 20px;
-    // background-color: rgba(0, 0, 255, 0.2);
+    margin-left: 10px;
     margin-top: 8px;
-    border: 3px solid rgba(172, 48, 46, 1.00);
+    border: 1px solid rgba(172, 48, 46, 1.00);
     background-color: rgba(227, 106, 101, 1.00);
     color: rgba(172, 48, 46, 1.00);
-    @include border-radius(50%);
     font-size: 30px;
     line-height: 45px;
     overflow: hidden;
-    @media screen and (min-width: 0) and (max-width: #{450px - 1px}) {
-      margin-left: 10px;
-    }
+    cursor: pointer;
+    @include border-radius(50%);
   }
 }
 #logo {
-  width: 150px;
+  width: 175px;
   height: 100%;
-  margin-left: 10px;
   text-align: left;
   color: rgba(255, 255, 255, 1);
   line-height: $headerHeight;
   font-size: 22px;
+  padding-top: 1px;
   text-decoration: none;
   letter-spacing: 2px;
-
-  @media screen and (min-width: 0) and (max-width: #{450px - 1px}) {
+  @include range-in(0, 600px - 1px) {
     display: none;
   }
 }
 
 #container {
   position: relative;
-  display: inline-block;
+  display: block;
   width: calc(100% - 10px * 2);
   max-width: 1200px;
-  margin: 10px;
   z-index: 5;
+  margin: 0 auto;
+  margin-bottom: 10px;
 
-  // border: 1px solid rgba(255, 0, 0, .3);
   padding-top: $headerHeight;
-  // padding-bottom: 80px;
   text-align: center;
   @include clearfix();
-  > * {
-    display: inline-block;
-    float: left;
-    // border: 1px solid rgba(255, 0, 0, .3);
-  }
-}
+  z-index: 20;
 
-#footer {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  // border-top: 1px solid rgba(235, 235, 235, 1.00);
-  // background-color: rgba(255, 255, 255, 1.00);
-  // @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, .14));
-  overflow: hidden;
-  margin-top: 30px;
-
-
-  &:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: -1px;
-    display: inline-block;
-    width: 100%;
-    height: 1px;
-    @include box-shadow(0 0 1px rgba(0, 0, 0, .3));
-    // @include box-shadow(0 1px 5px rgba(0, 0, 0, .35), 0 1px 1px rgba(0, 0, 0, .15));
-  }
-}
-
-#footer_content {
-  display: inline-block;
-  max-width: 1200px;
-  width: calc(100% - 10px * 2);
-  margin: 0 10px;
-  padding: 0 10px;
-  @media screen and (min-width: 0) and (max-width: #{700px - 1px}) {
-    padding: 10px 0;
-    text-align: center;
-  }
-  @include clearfix();
-  > * {
-    display: inline-block;
-    font-size: 13px;
-
-    @media screen and (min-width: 0) and (max-width: #{700px - 1px}) {
-      width: 100%;
-      float: left;
-      text-align: center;
-      line-height: 25px;
-      &:last-child {
-        margin-top: 5px;
-      }
-    }
-    @media screen and (min-width: #{700px}) {
-      height: 55px;
-      line-height: 55px;
-      &:first-child {
-        float: right;
-        text-align: right;
-        width: 30%;
-      }
-      &:last-child {
-        float: left;
-        text-align: left;
-        width: 70%;
-      }
-    }
-  }
-  .l {
-    @include opacity(.5);
-    a {
-      @include a;
-    }
-    @media screen and (min-width: 0) and (max-width: #{700px - 1px}) {
-      letter-spacing: 2px;
-      span {
-        display: none;
-      }
-    }
-  }
-  .r {
-    @include clearfix();
-    @media screen and (min-width: 0) and (max-width: #{700px - 1px}) {
-      display: inline-block;
-      width: auto;
-      margin: 0 auto;
-      float: none;
-    }
-    a {
-      position: relative;
-      @include a;
-      display: inline;
-      text-decoration: none;
-
-      float: right;
-
-      + a {
-        margin-right: 5px;
-
-        &:before {
-          content: '';
-          position: absolute;
-          right: -5px + 1px;
-          bottom: calc(50% - 1px);
-          display: inline-block;
-          width: 2px;
-          height: 2px;
-          @include border-radius(50%);
-          background-color: rgba(0, 0, 0, .3);
-        }
-      }
-      @media screen and (min-width: #{700px}) {
-        + a {
-          margin-right: 10px;
-          &:before {
-            right: -7px + 1px;
-          }
-        }
-      }
-    }
-  }
-}
-
-#add_btn {
-  $w: 55px;
-  position: fixed;
-  bottom: 60px;
-  right: 60px;
-  display: inline-block;
-  width: $w;
-  height: $w;
-  line-height: $w;
-  z-index: 100 + 5;
-  cursor: pointer;
-  color: rgba(255, 255, 255, .7500);
-  font-size: 26px;
-  text-decoration: none;
-  background-color: rgba(210, 63, 49, 1.00);
-  @include opacity(1);
-  @include border-radius(50%);
-  @include box-shadow(0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28));
-  @include transition(color .3s, background-color .3s);
-
-  @media screen and (min-width: 0) and (max-width: #{500px - 1px}) {
-    $w2: 45px;
-    bottom: 10px;
-    right: 10px;
-    width: $w2;
-    height: $w2;
-    line-height: $w2;
-    font-size: 24px;
-  }
-  // @media screen and (min-width: 0) and (max-width: #{400px - 1px}) {
-  //   bottom: 5px;
-  //   right: 5px;
+// border: 1px solid rgba(255, 0, 0, .3);
+  // > * {
+  //   display: inline-block;
+  //   float: left;
   // }
-  @media screen and (min-width: 500px) and (max-width: #{700px - 1px}) {
-    bottom: 15px;
-    right: 15px;
-  }
-  @media screen and (min-width: 700px) and (max-width: #{1000px - 1px}) {
-    bottom: 30px;
-    right: 30px;
-  }
-  @media screen and (min-width: #{1200px + ($w + 30px) *2 + 30px}) {
-    right: calc(50% - 1200px / 2 - #{$w / 2} - 10px * 2 - 30px);
-  }
-  &:hover {
-    color: rgba(255, 255, 255, 1.00);
-    background-color: rgba(239, 61, 44, 1.00);
+  @include range-in(800px) {
+    padding-left: 200px;
+    @include transition(padding-left .3s);
   }
 }
 
-// #add {
-//   position: fixed;
-//   bottom: 80px;
-//   right: 60px;
-//   display: inline-block;
-//   width: 55px;
-//   height: 55px;
-//   line-height: 55px;
-//   font-size: 26px;
-//   cursor: pointer;
-//   text-decoration: none;
-//   background-color: rgba(210, 63, 49, 1.00);
-//   color: rgba(255, 255, 255, .7500);
-//   @include border-radius(50%);
-//   @include transition(color .3s, background-color .3s);
-//   
-  
-// }
-
-// .ckb {
-//   $w: 55px;
-//   top: 0;
-//   left: 0;
-//   z-index: -999;
-//   @include opacity(0);
-
-//   &:checked {
-//     + #add_feature {
-//       > * {
-//         @include opacity(1);
-//         @for $i from 1 through 10 {
-//           &:nth-child(#{$i}) {
-//             top: 0 - ($i - 1) * ($w + 10px);
-//           }
-//         }
-//       }
-//       + label {
-//         display: inline-block;
-//         z-index: 100;
-//         @include opacity(1);
-//       }
-//     }
-//   }
-// }
-
-// #add_feature {
-//   $w: 55px;
-//   position: fixed;
-//   bottom: 80px;
-//   right: 60px;
-//   display: inline-block;
-//   width: $w;
-//   height: $w;
-//   z-index: 100 + 5;
-  
-//   > * {
-//     position: absolute;
-//     display: inline-block;
-//   }
-//   + label {
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     display: none;
-//     width: 100%;
-//     height: 100%;
-//     background-color: rgba(0, 0, 0, .300);
-//     z-index: -999;
-//     @include opacity(0);
-//     @include transition(opacity .3s);
-//   }
-//   a, label {
-//     top: 0;
-//     left: 0;
-//     width: $w;
-//     height: $w;
-//     line-height: $w;
-//     background-color: rgba(0, 0, 255, 0.2);
-//     z-index: 2;
-//     cursor: pointer;
-//     color: rgba(255, 255, 255, .7500);
-//     font-size: 26px;
-//     @include opacity(0);
-//     @include border-radius(50%);
-//     @include transition(top .3s, color .3s, opacity .3s);
-//     &:hover {
-//       color: rgba(255, 255, 255, 1.00);
-//     }
-//   }
-//   a {
-//     &:nth-child(2) {
-//       background-color: rgba(64, 173, 93, 1.00);
-//     }
-//     &:nth-child(3) {
-//       background-color: rgba(66, 133, 244, 1.00);
-//     }
-//     &:nth-child(4) {
-//       background-color: rgba(251, 188, 5, 1.00);
-//     }
-//     &:nth-child(5) {
-//       background-color: rgba(66, 84, 181, 1.00);
-//     }
-//   }
-//   label {
-//     z-index: 3;
-//     text-decoration: none;
-//     background-color: rgba(210, 63, 49, 1.00);
-//     @include opacity(1);
-//     @include box-shadow(0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28));
-//     @include transition(color .3s, background-color .3s);
-    
-//     &:hover {
-//       color: rgba(255, 255, 255, 1.00);
-//       background-color: rgba(239, 61, 44, 1.00);
-//     }
-//   }
-// }
-.ckb {
-  position: fixed;
-  top: -100px;
-  left: -100px;
-  display: none;
-  @include opacity(0);
-  z-index: -999;
-}
-#menu_ckb {
-  &:checked {
-    ~ #menu {
-      left: 0;
-      @include opacity(1);
-
-      + label {
-        display: inline-block;
-        z-index: 200;
-        @include opacity(1);
-      }
-    }
-  }
-}
 #menu {
   position: fixed;
   top: 0;
-  left: -100%;
+  left: 10px;
+  @include range-in(1200px + 10px * 2) {
+    left: calc(50% - 1200px / 2);
+  }
   display: inline-block;
-  width: calc(50% - 1200px / 2 + 250px);
+  width: 200px;
   height: 100%;
-  z-index: 200 + 5;
-  background-color: white;
-  text-align: right;
-  @include box-shadow(0 -1px 24px rgba(0,0,0,0.4));
-  @include opacity(0);
-  @include transition(opacity .3s, left .3s);
-  overflow: auto;
+  background-color: rgba(240, 240, 240, 1.00);
+  @include opacity(1);
+  @include transition(top .3s, opacity .3s);
+  
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 
   &::-webkit-scrollbar-thumb {
@@ -558,47 +275,7 @@ $headerHeight: 55px;
     background-color: transparent;
     width: 8px;
   }
-  @media screen and (min-width: 0) and (max-width: #{1200px - 1px}) {
-    width: 250px;
-  }
 
-  .content {
-    display: inline-block;
-    width: 250px;
-    padding: 10px;
-    text-align: left;
-
-    > span {
-      display: block;
-      width: 100%;
-      height: 1px;
-      background-color: rgba(225, 225, 225, 1);
-    }
-    > a {
-      display: inline-block;
-      width: 100%;
-      
-      height: 50px;
-      line-height: 50px;
-      text-align: left;
-      color: #646464;
-      text-decoration: none;
-      font-size: 14px;
-      letter-spacing: 1px;
-      @include transition(color .3s);
-      
-      &:before {
-        display: inline-block;
-        width: 50px;
-        line-height: 42px;
-        text-align: right;
-        padding-right: 8px;
-        font-size: 20px;
-        margin-top: 5px;
-        text-align: center;
-      }
-    }
-  }
   header {
     position: relative;
     display: inline-block;
@@ -608,51 +285,338 @@ $headerHeight: 55px;
     background-color: rgba(218, 57, 50, 1.00);
     color: white;
     border-bottom: 1px solid rgba(156, 31, 16, 1.00);
-    .content {
-      height: 120px;
-      @include clearfix();
-      padding-top: 25px;
-      padding-left: 20px;
-      @include background-image(radial-gradient(50% 50%, rgba(230, 230, 230, .2) 0px, rgba(255, 255, 255, 0) 100%));
+    padding-top: 25px;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    @include clearfix();
+    @include background-image(radial-gradient(50% 50%, rgba(230, 230, 230, .2) 0px, rgba(255, 255, 255, 0) 100%));
 
-      div {
+    div {
+      display: inline-block;
+      float: left;
+      text-align: left;
+    }
+    div:first-child {
+      font-size: 45px;
+      width: 100px;
+      font-family: 微軟正黑體, "Open sans", "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+    }
+    div:last-child {
+      width: calc(100% - 100px);
+      padding-top: 10px;
+      
+      span {
         display: inline-block;
-        float: left;
-      }
-      div:first-child {
-        font-size: 45px;
-        width: 100px;
-        font-family: 微軟正黑體, "Open sans", "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
-      }
-      div:last-child {
-        width: calc(100% - 100px);
-        padding-top: 10px;
-        
-        span {
-          display: inline-block;
-          width: 100%;
-          @include overflow-docx3();
+        width: 100%;
+        @include overflow-docx3();
 
-          &:last-child {
-            font-family: 微軟正黑體, "Open sans", "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
-          }
+        &:last-child {
+          font-family: 微軟正黑體, "Open sans", "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
         }
       }
     }
   }
-  
-  + label {
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: none;
+
+  > footer {
+    display: inline-block;
     width: 100%;
-    height: 100%;
-    z-index: 200;
-    background-color: rgba(0,0,0,0.3);
-    z-index: -999;
+    color: rgba(170, 170, 170, 1.00);
+    font-size: 12px;
+    text-align: left;
+    border-top: 1px solid rgba(225, 225, 225, .85);
+    padding: 5px 0;
+    padding-top: 7px;
+    padding-left: 5px;
+    height: 50px;
+    margin-top: 20px;
+
+    a {
+      text-decoration: none;
+      @include a;
+      @include opacity(.75);
+    }
+    * {
+      display: inline-block;
+      width: 100%;
+      + * {
+        margin-top: 3px;
+      }
+    }
+  }
+  > i {
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin: 0;
+    background-color: rgba(225, 225, 225, .85);
+  }
+  > a {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    height: 45px;
+    line-height: 45px;
+    text-decoration: none;
+    color: rgba(85,85,85, 1.00);
+    font-size: 14px;
     cursor: pointer;
+    @include transition(background-color .3s);
+    &.active {
+      background-color: rgba(225, 225, 225, 1.00);
+      &, &:before {
+        color: rgba(218, 57, 50, 1.00);
+        font-weight: bold;
+      }
+    }
+    &:hover {
+      background-color: rgba(230, 230, 230, 1.00);
+    }
+    &:before {
+      display: inline-block;
+      text-align: center;
+      width: 45px;
+      height: 45px;
+      color: rgba(135, 135, 135, 1.00);
+      font-size: 18px;
+    }
+  }
+  @include range-in(0, 800px - 1px) {
+    z-index: 200;
+    left: -250px;
+    width: 250px;
     @include opacity(0);
-    @include transition(opacity .3s);
+    background-color: rgba(255, 255, 255, 1.00);
+    @include box-shadow(0 -1px 24px rgba(0,0,0,0.4));
+    @include transition(left .3s, opacity .3s);
+    
+    
+    + label {
+      top: 0;
+      left: 0;
+      display: inline-block;
+      @include transition(opacity .3s);
+    }
+  }
+  @include range-in(800px) {
+    z-index: 20 + 5;
+
+    header {
+      display: none;
+    }
+    padding-top: $headerHeight + 25px;
+  };
+}
+#menu_ckb {
+  &:checked {
+    @include range-in(0, 800px - 1px) {
+      ~ #menu {
+        left: 0;
+        @include opacity(1);
+        + label {
+          z-index: 200 - 1;
+          @include opacity(1);
+        }
+      }
+    }
+    @include range-in(800px) {
+      ~ #container {
+        padding-left: 0;
+      }
+      ~ #menu {
+        top: -100%;
+        @include opacity(1);
+      }
+    }
+  }
+}
+
+#user_info {
+
+  position: fixed;
+
+  width: 250px;
+  max-height: #{45px * 2 + 115px + 50px};
+  height: calc(100% - #{$headerHeight + 10px + 5px});
+  background-color: white;
+  
+  display: none;
+  top: -999;
+  left: -999;
+  z-index: -999;
+  text-align: left;
+  @include opacity(0);
+  @include box-shadow(0 2px 10px rgba(0, 0, 0, 0.2));
+  @include border-radius(2px);
+  @include transition(opacity .3s);
+  
+
+  &:after {
+    bottom: 100%;
+    right: 18px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+
+    border-color: transparent;
+    border-bottom-color: white;
+    border-width: 10px;
+    margin-right: 0 - 10px;
+  }
+  header {
+    display: block;
+    border-bottom: 1px solid rgba(225, 225, 225, .85);
+    padding: 15px;
+    height: 115px;
+    @include clearfix();
+    @include border-top-radius(2px);
+    
+    > * {
+      display: inline-block;
+      float: left;
+    }
+    .user {
+      background-color: rgba(0, 0, 255, 0.2);
+      height: 55px;
+      width: 55px;
+      margin-top: 10px;
+      @include border-radius(50%);
+    }
+    .info {
+      width: calc(100% - 55px);
+      padding-left: 15px;
+
+      span {
+        display: inline-block;
+        max-width: 100%;
+        @include overflow-docx3();
+
+        &.name {
+          font-weight: bold;
+          color: rgba(21, 21, 21, 1.00);
+        }
+        &.mail {
+          color: rgba(102, 102, 102, 1.00);
+          font-size: 12px;
+          margin-top: 2px;
+          margin-bottom: 5px;
+
+          ~ * {
+            font-size: 12px;
+            line-height: 18px;
+            @include opacity(.85);
+          }
+        }
+          
+      }
+    }
+  }
+  > div {
+    display: block;
+    height: calc(100% - 115px - 50px);
+
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(175, 175, 175, 1.00);
+      @include border-radius(4px);  
+    }
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      width: 8px;
+    }
+
+    > * {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      height: 45px;
+      line-height: 45px;
+      padding: 0 20px;
+      padding-left: 0;
+      font-size: 14px;
+      cursor: pointer;
+      @include transition(background-color .3s);
+      
+      &:hover {
+        background-color: rgba(245, 245, 245, 1.00);
+      }
+      &:before {
+        display: inline-block;
+        width: 45px;
+        height: 45px;
+        text-align: center;
+        font-size: 18px;
+      }
+      + * {
+        &:after {
+          content: '';
+          position: absolute;
+          left: 40px;
+          width: calc(100% - 40px);
+          display: inline-block;
+          height: 1px;
+          top: 0;
+          background-color: rgba(225, 225, 225, .85);
+        }
+        &.all {
+          &:after {
+            left: 0;
+            width: 100%;
+          } 
+        }
+      }
+    }
+  }
+  footer {
+    display: block;
+    border-top: 1px solid rgba(225, 225, 225, .85);
+    padding: 10px;
+    height: 50px;
+    text-align: right;
+    background-color: rgba(245, 245, 245, 1.00);
+    @include clearfix();
+    @include border-bottom-radius(2px);
+
+    a {
+      display: inline-block;
+      padding: 3px 15px;
+      text-decoration: none;
+      font-size: 13px;
+      border: 1px solid rgba(225, 225, 225, .85);
+      background-color: rgba(250, 250, 250, 1.00);
+      @include border-radius(2px);
+      color: rgba(110, 110, 110, 1.00);
+      @include transition(background-color .3s);
+      
+      &:hover {
+        background-color: rgba(255, 255, 255, 1.00);
+      }
+    }
+  }
+}
+#user_info_ckb {
+  &:checked {
+    ~ #user_info {
+      top: 35px + 10px + 10px + 5px;
+      right: 10px;
+      display: inline-block;
+      z-index: 50;
+
+      @include range-in(1200px + 10px * 2) {
+        right: calc(50% - 1200px / 2);
+      }
+      @include opacity(1);
+      + label {
+        display: inline-block;
+        top: 0;
+        left: 0;
+        z-index: 50 - 2;
+        @include opacity(1);
+      }
+    }
   }
 }

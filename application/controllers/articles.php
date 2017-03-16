@@ -20,7 +20,7 @@ class Articles extends Site_controller {
   }
   public function show () {
     $this->load_view (array (
-        'obj' => $this->background-color: rgba(0, 0, 255, 0.2);obj
+        'obj' => $this->obj
       ));
   }
 }

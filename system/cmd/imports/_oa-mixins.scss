@@ -11,7 +11,17 @@
 @import "functions/_oa-textarea";
 
 @import "functions/_oa-material";
-
+@mixin range-in($min: 0, $max: 0) {
+  @if $max == 0 {
+    @media screen and (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  }
+}
 @mixin font-smoothing ($val: antialiased) {
   -moz-osx-font-smoothing: $val;
    -webkit-font-smoothing: $val;
