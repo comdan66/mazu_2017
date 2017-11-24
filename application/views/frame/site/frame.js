@@ -8,4 +8,25 @@ window.fbAsyncInit = function () { FB.init ({ appId: 1404982536188150, cookie: t
 
 $(function () {
   $('._i').OAIL ({verticalAlign: 'center'});
+
+  var _flash_danger = _fsg ('_flash_danger');
+  if (_flash_danger && _flash_danger.length) {
+    $('<div />').addClass ('_flash_danger').text (_flash_danger).prependTo ($('#container'));
+    _fss ('_flash_danger', '');
+  }
+  
+  var _flash_info = _fsg ('_flash_info');
+  if (_flash_info && _flash_info.length) {
+    $('<div />').addClass ('_flash_info').text (_flash_info).prependTo ($('#container'));
+    _fss ('_flash_info', '');
+  }
+
+  function avatar () {
+    // if (_fsg ('_user')) ?    
+  }
+
+
+  // console.error (_fsg ('_user') ? 1 : 2);
+  
+
 });

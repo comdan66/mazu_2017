@@ -1,14 +1,16 @@
 <article id='article' data-url='<?php echo base_url ('articles', $obj->id);?>'>
+  <!-- <input type='checkbox' id='article_config_ckb' class='ckb' /> -->
+
   <nav>
     <div class='user _i'>
       <img src='https://scontent-tpe1-1.xx.fbcdn.net/v/t31.0-8/13112953_1301234786556527_5094798318877121663_o.jpg?oh=e4b336234e5e2079b05e81cebf6deaac&oe=590B57F5'>
     </div>
-    <a href='' class='name'>吳政賢</a>
+    <a href='' class='name'>吳政賢吳政賢吳政賢吳政賢</a>
     <i>></i>
-    <a href='' class='tag'>討論區</a>
+    <a href='' class='tag'>討論區討論區討論區討論區討論區討論區</a>
     <i>></i>
-    <h1 class='title'>三月十九</h1>
-    <label class='icon-search'></label>
+    <h1 class='title'>三月十九三月十九三月十九三月十九三月十九三月十九三月十九三月十九三月十九三月十九三月十九三月十九</h1>
+    <!-- <label class='icon-keyboard_arrow_down' for='article_config_ckb'></label> -->
     <time>2107.01.12</time>
     <div class='fb-like' data-href='https://baishatun.godroad.tw/index.html' data-send='false' data-layout='button_count' data-action='like' data-show-faces='false' data-share='true'></div>
   </nav>
@@ -56,4 +58,111 @@
 <p><img alt="" src="http://pic.mazu.ioa.tw/upload/ckeditor_pictures/name/0/0/0/43/400w_1368513066_57052baf92303.jpg" style="width: 400px; height: 264px;" /><br />
 ▲ 73年，虎爺裝扮的虎爺會人員 (取自網路)</p>
   </section>
+  
+  <div id='comments'>
+
+    <div class='comment'>
+      <div class='user _i'>
+        <img src='https://scontent-tpe1-1.xx.fbcdn.net/v/t31.0-8/13112953_1301234786556527_5094798318877121663_o.jpg?oh=e4b336234e5e2079b05e81cebf6deaac&oe=590B57F5'>
+      </div>
+      <div class='content'>
+        <div class='top'>
+          <a>吳政賢</a>
+          <time>1 分鐘前</time>
+        </div>
+        <div class='mid'>
+          今北港鎮的虎爺在每年農曆三月十九、二十日跟隨北港朝天宮媽祖出巡，虎爺「喫炮」成為了觀光客或愛好刺激的民眾不可不看的重頭戲。各地的虎爺會或有供奉虎爺的廟宇，近年來也開始效法北港虎爺的喫炮方式，並自成一格，但北港虎爺的精神及特有步法始終無法承習。也因鞭炮燃放方式不同而衍生出了多種喫炮方式，欲欣賞虎爺喫炮的強大威力，可於每年農曆三月十九、二十日來北港參與「北港迎媽祖」之盛事。
+        </div>
+      </div>
+      <div class='configs'>
+        <a class='icon-keyboard_arrow_down'></a>
+        <div class='config n3'>
+          <a href="" class='icon-f'> 分享至臉書</a>
+          <a href="" class='icon-warning'> 回報有不妥</a>
+          <a href="" class='icon-bin'> 刪除此留言</a>
+        </div>
+      </div>
+    </div>
+
+    <div class='comment'>
+      <div class='user _i'>
+        <img src='https://scontent-tpe1-1.xx.fbcdn.net/v/t31.0-8/13112953_1301234786556527_5094798318877121663_o.jpg?oh=e4b336234e5e2079b05e81cebf6deaac&oe=590B57F5'>
+      </div>
+      <div class='content'>
+        <div class='top'>
+          <a>吳政賢</a>
+          <time>1 分鐘前</time>
+        </div>
+        <div class='mid'>
+          今北港鎮的虎爺在每年農曆三月十九
+        </div>
+      </div>
+      <div class='configs'>
+        <a class='icon-keyboard_arrow_down'></a>
+        <div class='config n3'>
+          <a href="" class='icon-f'> 分享至臉書</a>
+          <a href="" class='icon-warning'> 回報有不妥</a>
+          <a href="" class='icon-bin'> 刪除此留言</a>
+        </div>
+      </div>
+    </div>
+
+    <div class='comment'>
+      <div class='user _i'>
+        <img src='https://scontent-tpe1-1.xx.fbcdn.net/v/t31.0-8/13112953_1301234786556527_5094798318877121663_o.jpg?oh=e4b336234e5e2079b05e81cebf6deaac&oe=590B57F5'>
+      </div>
+      <div class='content'>
+        <div class='top'>
+          <a>吳政賢</a>
+          <time>1 分鐘前</time>
+        </div>
+        <div class='mid'>
+          今北港鎮的虎爺在每年農曆三月十九
+        </div>
+      </div>
+      <div class='configs'>
+        <a class='icon-keyboard_arrow_down'></a>
+        <div class='config n3'>
+          <a href="" class='icon-f'> 分享至臉書</a>
+          <a href="" class='icon-warning'> 回報有不妥</a>
+          <a href="" class='icon-bin'> 刪除此留言</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id='comment'>
+    <!-- <div class='user _i'>
+      <img src='<?php echo resource_url ('resource', 'image', 'user.png');?>'>
+    </div> -->
+    <!-- <input type='text' name='comment' placeholder='留言吧！' required /> -->
+    <a href=''>登入留言</a>
+  </div>
+
+  <!-- 
+  <div id='comment'>
+    <div class='user _i'>
+      <img src='https://scontent-tpe1-1.xx.fbcdn.net/v/t31.0-8/13112953_1301234786556527_5094798318877121663_o.jpg?oh=e4b336234e5e2079b05e81cebf6deaac&oe=590B57F5'>
+    </div>
+    <input type='text' name='comment' placeholder='留言吧！' required />
+    <button type='submit'>留言</button>
+  </div> -->
+
+  <!-- <div id='article_config' class='n4'>
+    <a href="" class='icon-keyboard_arrow_down'> 分享至臉書</a>
+    <a href="" class='icon-keyboard_arrow_down'> 回報有不妥</a>
+    <a href="" class='icon-keyboard_arrow_down'> 刪除此文章</a>
+    <a href="" class='icon-keyboard_arrow_down'> 編輯此文章</a>
+  </div><label for='article_config_ckb' class='ckb_cover'></label> -->
+
+  <div class='configs'>
+    <a class='icon-keyboard_arrow_down'></a>
+    <div class='config n4'>
+      <a href="" class='icon-f'> 分享至臉書</a>
+      <a href="" class='icon-warning'> 回報有不妥</a>
+      <a href="" class='icon-pencil2'> 編輯此文章</a>
+      <a href="" class='icon-bin'> 刪除此文章</a>
+    </div>
+  </div>
+
 </article>

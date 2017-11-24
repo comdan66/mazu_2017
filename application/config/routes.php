@@ -3,5 +3,6 @@
 Route::root ('main');
 
 // $route['admin'] = "admin/main";
+Route::get ('logout', 'platform@logout');
 Route::get ('admin', 'admin/main@index');
 Route::resource (array ('articles'), 'articles');

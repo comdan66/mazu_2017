@@ -15,7 +15,6 @@ class Migration_Add_articles extends CI_Migration {
         
         `cover` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT '封面',
         `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '標題',
-        `subtitle` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '子標題',
         `content` text COMMENT '內容',
         `pv` int(11) unsigned NOT NULL DEFAULT 0 COMMENT 'Page View',
         `enable` tinyint(4) unsigned NOT NULL DEFAULT 0 COMMENT '上下架，1 上架，0 下架',

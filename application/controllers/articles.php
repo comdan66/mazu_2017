@@ -16,10 +16,13 @@ class Articles extends Site_controller {
         return redirect_message (array (''), array ('_flash_danger' => '找不到該筆資料。'));
   }
   public function index () {
-    $this->load_view ();
+    return $this->load_view (array (
+        'now_url' => base_url ('articles'),
+      ));
   }
   public function show () {
-    $this->load_view (array (
+    return $this->load_view (array (
+        'now_url' => base_url ('articles'),
         'obj' => $this->obj
       ));
   }

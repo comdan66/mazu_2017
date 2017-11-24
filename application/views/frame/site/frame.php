@@ -10,10 +10,11 @@
 <?php echo isset ($js_list) ? $js_list : ''; ?>
 
   </head>
-  <body lang="zh-tw">
+  <body lang="zh-tw"<?php echo isset ($body_class) && $body_class ? ' class="' . $body_class . '"' : '' ;?>>
     <?php echo isset ($hidden_list) ? $hidden_list : ''; ?>
     <input type='checkbox' id='menu_ckb' class='ckb' />
     <input type='checkbox' id='user_info_ckb' class='ckb' />
+    
 
     <header id='header'>
       <div id='header_content'>
@@ -25,7 +26,7 @@
           <button class='icon-search'></button>
         </span>
         <label class='user _i' for='user_info_ckb'>
-          <img src='https://scontent-tpe1-1.xx.fbcdn.net/v/t31.0-8/13112953_1301234786556527_5094798318877121663_o.jpg?oh=e4b336234e5e2079b05e81cebf6deaac&oe=590B57F5'>
+          <img src='<?php echo User::avatar ();?>'>
         </label>
       </div>
     </header>
@@ -33,51 +34,45 @@
     <div id='container'><?php echo isset ($content) ? $content : ''; ?></div>
 
     <div id='menu'>
-      <header>
-        <div>北港</div>
-        <div>
-          <span>迎媽祖</span>
-          <span>Beigang Mazu</span>
-        </div>
-      </header>
-
-      <a href='' target='_blank' class='icon-menu active'>首頁</a>
-      <a href='' target='_blank' class='icon-menu'>討論區</a>
-      <a href='' target='_blank' class='icon-menu'>陣頭介紹</a>
-      <a href='' target='_blank' class='icon-menu'>最新路關</a>
-      <a href='' target='_blank' class='icon-menu'>活動相簿</a>
-      <a href='' target='_blank' class='icon-menu'>影音紀錄</a>
+      <header><div>北港</div><div><span>迎媽祖</span><span>Beigang Mazu</span></div></header>
+      <a href='<?php echo $url = base_url ('');?>' class='icon-home<?php echo isset ($now_url) && $now_url == $url ? ' active' : '';?>'>首頁</a>
+      <a href='<?php echo $url = base_url ('articles');?>' class='icon-file-text2<?php echo isset ($now_url) && $now_url == $url ? ' active' : '';?>'>所有文章</a>
+      <a href='<?php echo $url = base_url ('maps');?>' class='icon-op<?php echo isset ($now_url) && $now_url == $url ? ' active' : '';?>'>最新路關</a>
+      <a href='<?php echo $url = base_url ('albums');?>' class='icon-images<?php echo isset ($now_url) && $now_url == $url ? ' active' : '';?>'>活動相簿</a>
+      <a href='<?php echo $url = base_url ('videos');?>' class='icon-film<?php echo isset ($now_url) && $now_url == $url ? ' active' : '';?>'>影音紀錄</a>
       <i></i>
-      <a href='' target='_blank' class='icon-menu'>授權聲明</a>
-      <a href='' target='_blank' class='icon-menu'>關於作者</a>
-
-      <footer>
-        <a href='' target='_blank'>隱私權政策 - 服務條款</a>
-        <span>© 2014-2017 MAZU.IOA.TW</span>
-      </footer>
+      <a href='<?php echo $url = base_url ('license');?>' class='icon-c<?php echo isset ($now_url) && $now_url == $url ? ' active' : '';?>'>授權聲明</a>
+      <a href='<?php echo $url = base_url ('author');?>' class='icon-user-secret<?php echo isset ($now_url) && $now_url == $url ? ' active' : '';?>'>關於作者</a>
+      <footer><a href='<?php echo base_url ('license');?>'>隱私權政策 - 服務條款</a><span>© 2014-2017 MAZU.IOA.TW</span></footer>
     </div><label for='menu_ckb' class='ckb_cover'></label>
 
-    <div id='user_info'>
-      <header>
-        <div class='user _i'>
-          <img src='https://scontent-tpe1-1.xx.fbcdn.net/v/t31.0-8/13112953_1301234786556527_5094798318877121663_o.jpg?oh=e4b336234e5e2079b05e81cebf6deaac&oe=590B57F5'>
-        </div>
-        <div class='info'>
-          <span class='name'>吳政賢</span>
-          <span class='mail'>comdan66@gmail.com</span>
-          <span>上次登入: <b><?php echo date('Y/m/d');?></b></span>
-          <span>登入次數: <b><?php echo '1,234';?></b>次</span>
-        </div>
-      </header>
+    <div id='user_info'<?php echo User::current () ? '' : ' class="nologin"';?>>
+<?php if (User::current ()) { ?>
+        <header>
+          <div class='user _i'>
+            <img src='<?php echo User::avatar ();?>'>
+          </div>
+          <div class='info'>
+            <span class='name'><?php echo User::current ()->name;?></span>
+            <span class='mail'><?php echo User::current ()->email;?></span>
+            <span>上次登入: <b><?php echo User::current ()->logined_at->format ('Y/m/d');?></b></span>
+            <span>登入次數: <b><?php echo number_format (User::current ()->login_count);?></b>次</span>
+          </div>
+        </header>
+<?php } ?>
 
       <div>
-        <label class='icon-menu' for='user_info_ckb'>分享至臉書</label>
-        <label class='icon-menu' for='user_info_ckb'>分享至臉書</label>
+        <label class='icon-f' for='user_info_ckb'>分享至臉書</label>
       </div>
 
       <footer>
-        <a href=''>登出</a>
+  <?php if (User::current ()) { ?>
+          <a href='<?php echo base_url ('logout');?>'>登出</a>
+  <?php } else { ?>
+          <a href='<?php echo Fb::loginUrl ('platform', 'fb_sign_in');?>'>登入</a>
+  <?php } ?>
       </footer>
+
     </div><label for='user_info_ckb' class='ckb_cover'></label>
 
 

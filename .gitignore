@@ -14,13 +14,17 @@ application/logs/*
 application/config/database.php
 
 temp/*
-
 upload/*
-
 assets/*
+vendor/*
 
 /cmd
 
 system/cmd/.sass-cache/*
 system/cmd/node_modules/*
 system/cmd/npm-debug.log
+
+application/config/setting/facebook.php
+application/config/setting/ga.php
+application/config/setting/mail.php
+application/config/setting/line.php
